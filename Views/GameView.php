@@ -13,7 +13,7 @@
     if (isset($_POST['col'])) {
         // Si le coup est valide, il est joue, on verifie s'il est gagnant et on passe au tour suivant
         if ($jouerCoup->play(($_POST['col'] - 1), $GLOBALS['turn'])) {
-            if ($coupGagnant->is_win($GLOBALS['board'])) {
+            if ($coupGagnant->is_win($_POST['col'])) {
                 echo "<b>".(($GLOBALS['turn'] == 1) ? $GLOBALS['j1'] : $GLOBALS['j2'] )." a gagné !</b><br />";
                 $_SESSION['finish'] = true;
             } else {

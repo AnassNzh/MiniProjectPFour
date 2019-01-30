@@ -2,9 +2,10 @@
 
 class CoupGagnant
 {
-    function is_win() {
+    function is_win($position) {
         //global $board, $turn;
-        $posx = $_POST['col'] - 1;
+        //$posx = $_POST['col'] - 1;
+        $posx = $position - 1;
         // On doit maintenant retrouver la hauteur du dernier pion
         $i = HAUT - 1;
         while ($i>=0) {
@@ -27,10 +28,10 @@ class CoupGagnant
 
     // Les 2 fonctions suivantes permettent de verifier si le dernier coup etait gagnant
     function nb_align($posx, $posy, $dx, $dy) {
-        global $board, $turn;
+        //global $board, $turn;
         if ($posx<0 || $posx>=LARG || $posy<0 || $posy>=HAUT) {
             return 0;
-        } else if ($GLOBALS['board'][$posx][$posy] == $turn)	{
+        } else if ($GLOBALS['board'][$posx][$posy] == $GLOBALS['turn'])	{
             return 1 + (self::nb_align($posx+$dx, $posy+$dy, $dx, $dy));
         } else return 0;
     }

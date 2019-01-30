@@ -1,6 +1,6 @@
 <?php
 
-class Game
+class AIGame
 {
     public function __construct($post){
         define('HAUT',7);
@@ -13,9 +13,9 @@ class Game
         if (isset($post['nomj1'])) {
             $_POST['init'] = true;
             $_SESSION['nomj1'] = $post['nomj1'];
-            $_SESSION['nomj2'] = $post['nomj2'];
+            $_SESSION['nomj2'] = "Computer";
             setcookie("nomj1", $post['nomj1'], time()+12*24*3600); // expire dans 12 jours
-            setcookie("nomj2", $post['nomj2'], time()+12*24*3600);
+            setcookie("nomj2", "Computer", time()+12*24*3600);
         }
 
         // Dans le cas ou la session a expire, on reprend aussi les noms dans les cookies
@@ -42,8 +42,8 @@ class Game
             $_POST['init'] = false;
         }
 
-        require_once 'Services/AffichagePlateau.php';
-        $affichagePlateau = new AffichagePlateau();
+        require_once 'Services/AIAffichagePlateau.php';
+        $affichagePlateau = new AIAffichagePlateau();
 
         require_once 'Services/Choix.php';
         $choix = new Choix();
@@ -54,7 +54,10 @@ class Game
         require_once 'Services/JouerCoup.php';
         $jouerCoup = new JouerCoup();
 
-        require_once("Views/GameView.php");
+        require_once 'Services/AIMoves.php';
+        $aiMoves = new AIMoves();
+
+        require_once("Views/AIGameView.php");
 
         $_SESSION['board'] = $GLOBALS['board'];
         $_SESSION['turn'] = $GLOBALS['turn'];

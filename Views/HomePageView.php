@@ -9,6 +9,7 @@
 </head>
 <body>
 <div>
+    <h3>Vs. Player 2</h3>
     <form action="index.php?url=game" method="post">
         Nom du joueur 1 :<input type="text" name="nomj1" value="<?php
         if (isset($_COOKIE['nomj1']))
@@ -17,6 +18,15 @@
         Nom du joueur 2 :<input type="text" name="nomj2" value="<?php
         if (isset($_COOKIE['nomj2']))
             echo $_COOKIE['nomj2'];
+        ?>" required/><br />
+        <input type="submit" name="nomJoueur" value="Commencer" />
+    </form>
+
+    <h3>Vs. Computer</h3>
+    <form action="index.php?url=aigame" method="post">
+        Nom du joueur 1 :<input type="text" name="nomj1" value="<?php
+        if (isset($_COOKIE['nomj1']))
+            echo $_COOKIE['nomj1'];
         ?>" required/><br />
         <input type="submit" name="nomJoueur" value="Commencer" />
     </form>
