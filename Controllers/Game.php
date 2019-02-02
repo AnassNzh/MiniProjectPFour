@@ -42,6 +42,15 @@ class Game
             $_POST['init'] = false;
         }
 
+        require_once 'Model/JoueurModel.php';
+        $model=new JoueurModel();
+        $j1= $model->getJoueur($GLOBALS['j1']);
+        if(empty($j1))
+            $model->addJoueur($GLOBALS['j1']);
+        $j2=$model->getJoueur($GLOBALS['j2']);
+        if (empty($j2))
+            $model->addJoueur($GLOBALS['j2']);
+
         require_once 'Services/AffichagePlateau.php';
         $affichagePlateau = new AffichagePlateau();
 

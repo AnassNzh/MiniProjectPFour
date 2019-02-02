@@ -14,7 +14,9 @@
         // Si le coup est valide, il est joue, on verifie s'il est gagnant et on passe au tour suivant
         if ($jouerCoup->play(($_POST['col'] - 1), $GLOBALS['turn'])) {
             if ($coupGagnant->is_win($_POST['col'])) {
-                echo "<b>".(($GLOBALS['turn'] == 1) ? $GLOBALS['j1'] : $GLOBALS['j2'] )." a gagné !</b><br />";
+                $winer=(($GLOBALS['turn'] == 1) ? $GLOBALS['j1'] : $GLOBALS['j2'] );
+                echo "<b>".$winer." a gagné !</b><br/>";
+                $model->incScore($winer);
                 $_SESSION['finish'] = true;
             } else {
                 $GLOBALS['turn']=($GLOBALS['turn']%2) + 1;
@@ -32,6 +34,22 @@
 
     <form action="index.php" method="post">
         <input type="submit" value="Changer les noms" />
+    </form>
+    <?php
+    $tab=$model->getAllJoueur();
+    echo'<table>';
+    echo '<tr>';
+    echo '<th>nom</th>';
+    echo '<th>score</th>';
+    echo '</tr>';
+    foreach ($tab as $row){
+        echo '<tr>';
+        echo "<td>". $row[1] ."</td>";
+        echo "<td>". $row[2] ."</td>";
+        echo '</tr>';
+    }
+    echo'</table>';
+    ?>
 </div>
 </body>
 </html>
