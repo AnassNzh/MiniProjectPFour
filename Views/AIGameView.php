@@ -14,6 +14,7 @@
         $jouerCoup->play($aiMoves->AIPlay(), 2);
         if ($coupGagnant->is_win($aiMoves->AIPlay() + 1)) {
             echo "<b id='win'>Computer a gagné !</b><br />";
+            $model->incScore($GLOBALS['j1']);
             $_SESSION['finish'] = true;
         } else {
             $GLOBALS['turn'] = 1;
