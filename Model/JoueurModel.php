@@ -8,10 +8,10 @@
 
 class JoueurModel
 {
-    private $host = "localhost";
-    private $db = "jeuxp4";
-    private $user = "root";
-    private $pass = "";
+    private $host = "dz8959rne9lumkkw.chr7pe7iynqr.eu-west-1.rds.amazonaws.com";
+    private $db = "i3tmzmuiooyf0et6";
+    private $user = "abqf3gdvvu7jniur";
+    private $pass = "ha593exrs2rvm17v";
     private $conn;
 
     public function __construct()
