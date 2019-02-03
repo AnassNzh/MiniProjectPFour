@@ -11,5 +11,6 @@ class AIAffichagePlateau
         for ($i=(HAUT - 1); $i>=0; $i--) $affichageLigne->print_line($i);
         $affichageLigne->print_line_form();
         echo "</table>\n</form>\n";
+        return "true";
     }
 }

@@ -10,6 +10,7 @@ class InitialisationPlateau
             }
         }
         $_SESSION['finish'] = false;
+        return"initDone";
     }
 
 

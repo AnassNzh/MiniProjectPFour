@@ -14,6 +14,7 @@ class AffichageLigne
             echo '" /></td>';
         }
         echo "\n</tr>\n";
+        return true;
     }
 
     // attention : pour faire plus joli, on nomme les colonnes de 1 a 7.
